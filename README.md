@@ -10,12 +10,14 @@ What it do...
 - Allows players to buy car ✅
 - Allows players to spawn (one) car ✅✅✅
 - Allows players to return car ✅✅✅✅✅✅
+- Stores to local sv.db ✅✅✅✅✅✅✅✅✅✅✅✅
 - Allows players to refund car ✅✅✅✅✅✅✅✅✅✅✅✅
 - Provides a clean and super duper fast non fps intensive car dealer that is easy to add cars to!!! (simfphys only) ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 
 what it dont do...
 - Allow players to permanently customise car ❌❌
 - Allow players to HACK!!! (TOTES NOT!!! ITS HACK PROOF ❌❌ (lie))
+- Support external database
  
   
 # HOW IT LOOKS:
