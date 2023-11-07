@@ -113,7 +113,9 @@ Oh dear... this is an afterthought. Turns out people want to see their cars!!! x
             modelPanel:SetCamPos(Vector(100, -100, 20))
             modelPanel:SetFOV(100)
 
-            if CarDealerData[1] and CarDealerData[1].model then
+		-- lmao someone needs to help me out with this... i just tweak the numbers till shit looks right but brah it depends on car size
+
+            if CarDealerData[1] and CarDealerData[1].model then -- oh u know.. just incase :P! 
                 modelPanel:SetModel(CarDealerData[1].model)
             end
 
