@@ -23,8 +23,6 @@ what it dont do...
 # HOW IT LOOKS:
 Im not one for fancy UI. I love the charming style of derma.
 
-![image](https://github.com/ragaire/simfphys-car-dealer/assets/99757203/4468dc35-3a17-4eeb-9aec-611396b3488d)
+![image](https://github.com/ragaire/simfphys-car-dealer/assets/99757203/18b819a7-066d-4cf4-b78c-8c4a28695cab)
 
-
-# WHAT THE FLIP !!! (pardon my french)
 
