@@ -1,36 +1,22 @@
---[[
-Alot of people will be wondering what the fuck is this . Its the result of laziness.
-
-I used chat gpt to generate every single thing in that table as i was too lazy to add a car dealer into my server that required me to manually add each one in-game using a shitty ui.
-
-This is why im racist
-]]
-ENT.Base = "base_ai" 
+print("cardealer shared.lua loaded")
+ENT.Base = "base_ai"
 ENT.Type = "ai"
 ENT.PrintName = "cardea NPC"
 ENT.Author = "tbx"
 ENT.Spawnable = true
 ENT.Category = "kinfo"
 ENT.AdminSpawnable = true
-
-
-
-// Available Cars
-
-local mainSpawnPos = Vector(5981.371582, -4193.819824, 1827.968506) 
-local mainSpawnAng = Angle(0,270,0)
-
+-- Available Cars
+local mainSpawnPos = Vector(5981.371582, -4193.819824, 1827.968506)
+local mainSpawnAng = Angle(0, 270, 0)
 --[[
 NOT USED
 viewmodelpos = Vector(-4502.060059, -4193.819824, 1551.031250)
 viewmodelang = Angle(3.894012, -40.865463, 0.000000)
 ]]
 
-
 CarDealerData = {
-
-// Coupes
-
+-- Coupes
     {Entity = "simfphys_gta_sa_blistac", DisplayName = "Blista Compact", Price = 21500, model = "models/gta_sa/coupes_hatchbacks/blistac.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_bravura", DisplayName = "Bravura", Price = 31250, model = "models/gta_sa/coupes_hatchbacks/bravura.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_buccanee", DisplayName = "Buccaneer", Price = 29500, model = "models/gta_sa/coupes_hatchbacks/buccanee.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
@@ -49,9 +35,7 @@ CarDealerData = {
     {Entity = "simfphys_gta_sa_stallion", DisplayName = "Stallion", Price = 35900, model = "models/gta_sa/coupes_hatchbacks/stallion.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_tampa", DisplayName = "Tampa", Price = 25950, model = "models/gta_sa/coupes_hatchbacks/tampa.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_virgo", DisplayName = "Virgo", Price = 45100, model = "models/gta_sa/coupes_hatchbacks/virgo.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
-
-// Lowriders
-
+-- Lowriders
     {Entity = "simfphys_gta_sa_blade", DisplayName = "Blade", Price = 68000, model = "models/gta_sa/lowriders/blade.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_broadway", DisplayName = "Broadway", Price = 71000, model = "models/gta_sa/lowriders/broadway.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_remingtn", DisplayName = "Remington", Price = 60000, model = "models/gta_sa/lowriders/remingtn.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
@@ -60,9 +44,7 @@ CarDealerData = {
     {Entity = "simfphys_gta_sa_tahoma", DisplayName = "Tahoma", Price = 55000, model = "models/gta_sa/lowriders/tahoma.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_tornado", DisplayName = "Tornado", Price = 65000, model = "models/gta_sa/lowriders/tornado.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_voodoo", DisplayName = "Voodoo", Price = 75000, model = "models/gta_sa/lowriders/voodoo.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
-
-// SUV / PICKSUPS
-
+-- SUV / PICKSUPS
     {Entity = "simfphys_gta_sa_bobcat", DisplayName = "Bobcat", Price = 26500, model = "models/gta_sa/suvs_pickups/bobcat.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_huntley", DisplayName = "Huntley", Price = 30000, model = "models/gta_sa/suvs_pickups/huntley.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_landstalker", DisplayName = "Landstalker", Price = 29000, model = "models/gta_sa/suvs_pickups/landstal.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
@@ -71,9 +53,7 @@ CarDealerData = {
     {Entity = "simfphys_gta_sa_rancher", DisplayName = "Rancher", Price = 29500, model = "models/gta_sa/suvs_pickups/rancher.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_sadler", DisplayName = "Sadler", Price = 26000, model = "models/gta_sa/suvs_pickups/sadler.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_yosemite", DisplayName = "Yosemite", Price = 30000, model = "models/gta_sa/suvs_pickups/yosemite.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
-
-// SEDANS
-
+-- SEDANS
     {Entity = "simfphys_gta_sa_admiral", DisplayName = "Admiral", Price = 45000, model = "models/gta_sa/sedans/admiral.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_elegant", DisplayName = "Elegant", Price = 52000, model = "models/gta_sa/sedans/elegant.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_emperor", DisplayName = "Emperor", Price = 39000, model = "models/gta_sa/sedans/emperor.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
@@ -93,29 +73,19 @@ CarDealerData = {
     {Entity = "simfphys_gta_sa_stafford", DisplayName = "Stafford", Price = 59000, model = "models/gta_sa/sedans/stafford.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_stretch", DisplayName = "Stretch", Price = 64000, model = "models/gta_sa/sedans/stretch.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_sunrise", DisplayName = "Sunrise", Price = 50000, model = "models/gta_sa/sedans/sunrise.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
-
-
-
-// VANS
-
+-- VANS
     {Entity = "simfphys_gta_sa_burrito", DisplayName = "Burrito", Price = 32000, model = "models/gta_sa/vans/burrito.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_moonbeam", DisplayName = "Moonbeam", Price = 29000, model = "models/gta_sa/vans/moonbeam.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_pony", DisplayName = "Pony", Price = 26000, model = "models/gta_sa/vans/pony.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_rumpo", DisplayName = "Rumpo", Price = 30000, model = "models/gta_sa/vans/rumpo.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
-
-
-// TUNERS
-
+-- TUNERS
     {Entity = "simfphys_gta_sa_elegy", DisplayName = "Elegy", Price = 220000, model = "models/gta_sa/tuners/elegy.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_flash", DisplayName = "Flash", Price = 250000, model = "models/gta_sa/tuners/flash.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_jester", DisplayName = "Jester", Price = 270000, model = "models/gta_sa/tuners/jester.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_stratum", DisplayName = "Stratum", Price = 230000, model = "models/gta_sa/tuners/stratum.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_sultan", DisplayName = "Sultan", Price = 260000, model = "models/gta_sa/tuners/sultan.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_uranus", DisplayName = "Uranus", Price = 240000, model = "models/gta_sa/tuners/uranus.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
-
-
-// SPORTS
-
+-- SPORTS
     {Entity = "simfphys_gta_sa_alpha", DisplayName = "Alpha", Price = 300000, model = "models/gta_sa/sport cars/alpha.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_banshee", DisplayName = "Banshee", Price = 400000, model = "models/gta_sa/sport cars/banshee.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_buffalo", DisplayName = "Buffalo", Price = 350000, model = "models/gta_sa/sport cars/buffalo.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
@@ -130,8 +100,6 @@ CarDealerData = {
     {Entity = "simfphys_gta_sa_turismo", DisplayName = "Turismo", Price = 300000, model = "models/gta_sa/sport cars/turismo.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_windsor", DisplayName = "Windsor", Price = 290000, model = "models/gta_sa/sport cars/windsor.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
     {Entity = "simfphys_gta_sa_zr350", DisplayName = "ZR-350", Price = 325000, model = "models/gta_sa/sport cars/zr350.mdl", SpawnPos = mainSpawnPos, SpawnAng = mainSpawnAng},
-
-
 }
 
 
