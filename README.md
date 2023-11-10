@@ -16,7 +16,6 @@ What it do...
 
 what it dont do...
 - Allow players to permanently customise car ❌❌
-- Allow players to HACK!!! (TOTES NOT!!! ITS HACK PROOF ❌❌ (lie))
 - Support external database
  
   
