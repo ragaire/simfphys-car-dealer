@@ -1,3 +1,8 @@
+# a word of caution
+
+This was made spontaneously BUT not competently. It is thrown together in a fashion of "whatever came to my brain first and next" expect repeated functions & bad practises
+
+
 # simfphys-car-dealer
 a simple (sandbox esque) car dealer for simfphys ONLY . Does NOT support anything other than simfphys. it will NOT spawn any other cars . 
 
