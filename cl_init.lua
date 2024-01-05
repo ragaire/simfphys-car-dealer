@@ -15,10 +15,11 @@ local function PaintViewerFrame(self, w, h)
     draw.RoundedBox(0, w - 1, 0, 1, h, Color(255, 0, 0, 225))
 end
 
+
 local function ShowCarDealerMenu()
     local frame = vgui.Create("DFrame")
     frame:SetSize(400, 330)
-    frame:SetTitle("CAR DEALER")
+    frame:SetTitle("AUTOBAHN QUALITY VEHICLE IMPORTERS")
     frame:SetPos(ScrW() / 2 - 400, ScrH()) -- Start off-screen at the bottom
     frame:MoveTo(ScrW() / 2 - 400, ScrH() / 3, 0.5, 0, 0.5)
     frame:MakePopup()
@@ -30,7 +31,7 @@ local function ShowCarDealerMenu()
     openGarageButton:SetText("Open Garage")
     openGarageButton:SetEnabled(false) -- Initially disabled
     openGarageButton.DoClick = function()
-        RunConsoleCommand("opengarage")
+        RunConsoleCommand("opengaragecd")
         frame:Close()
     end
 
@@ -40,34 +41,34 @@ local function ShowCarDealerMenu()
     vehicleList:SetMultiSelect(false)
     vehicleList:AddColumn("Vehicle")
     vehicleList:AddColumn("Price")
-    local priceTable = {}
-    for key, data in pairs(CarDealerData) do
-        local price = tonumber(data.Price) -- Convert to a number
-        if price then
-            table.insert(
-                priceTable,
-                {
-                    Key = key,
-                    Price = price,
-                    Display = data.DisplayName
-                }
-            )
-        end
-    end
-
-    table.sort(priceTable, function(a, b) return a.Price < b.Price end)
-    vehicleList:Clear()
-
-
-    for _, entry in ipairs(priceTable) do
-        local formattedPrice = DarkRP and DarkRP.formatMoney(entry.Price) or entry.Price
-        vehicleList:AddLine(entry.Display, formattedPrice)
-    end
-
+    -- local priceTable = {}
     -- for key, data in pairs(CarDealerData) do
-    --     local formattedPrice = DarkRP and DarkRP.formatMoney(data.Price) or data.Price
-    --     vehicleList:AddLine(data.DisplayName, formattedPrice)
+    --     local price = tonumber(data.Price) -- Convert to a number
+    --     if price then
+    --         table.insert(
+    --             priceTable,
+    --             {
+    --                 Key = key,
+    --                 Price = price,
+    --                 Display = data.DisplayName
+    --             }
+    --         )
+    --     end
     -- end
+
+    -- table.sort(priceTable, function(a, b) return a.Price < b.Price end)
+    -- vehicleList:Clear()
+
+
+    -- for _, entry in ipairs(priceTable) do
+    --     local formattedPrice = DarkRP and DarkRP.formatMoney(entry.Price) or entry.Price
+    --     vehicleList:AddLine(entry.Display, formattedPrice)
+    -- end
+
+     for key, data in pairs(CarDealerData) do
+         local formattedPrice = DarkRP and DarkRP.formatMoney(data.Price) or data.Price
+         vehicleList:AddLine(data.DisplayName, formattedPrice)
+     end
 
     local purchaseButton = vgui.Create("DButton", frame)
     purchaseButton:SetPos(10, 290)
@@ -97,7 +98,7 @@ local function ShowCarDealerMenu()
                 local viewerframe = vgui.Create("DFrame")
                 viewerframe:SetSize(400, 330)
                 viewerframe:ShowCloseButton(false)
-                viewerframe:SetTitle("SELECTED VEHICLE VIEWER")
+                viewerframe:SetTitle("")
                 viewerframe:SetDraggable(false)
 
                 local frameX, frameY = frame:GetPos()
@@ -206,8 +207,66 @@ local function OpenGarageMenu()
         end
     )
 end
+local function OpenQuickSpawn()
+    local frame = vgui.Create("DFrame")
+    frame:SetSize(400, 300)
+    frame:SetTitle("Garage")
+    frame:Center()
+    frame:MakePopup()
+    frame.Paint = PaintMainFrame
+    local list = vgui.Create("DListView", frame)
+    list:Dock(FILL)
+    list:SetMultiSelect(false)
+    list:AddColumn("Car Name")
+    net.Start("RequestOwnedCars")
+    net.SendToServer()
+    local displayNameMap = {}
+    local spawnButtonCooldown = 0 -- Added cooldown variable
+    net.Receive(
+        "ReceiveOwnedCars",
+        function()
+            local ownedCars = net.ReadTable()
+            for _, car in pairs(ownedCars) do
+                local displayName = carDataMap[car] or car
+                displayNameMap[displayName] = car
+                list:AddLine(displayName)
+            end
 
-concommand.Add("opengarage", OpenGarageMenu)
+            local returnButton = vgui.Create("DButton", frame)
+            returnButton:Dock(BOTTOM)
+            returnButton:SetText("Return Vehicle")
+            returnButton.DoClick = function()
+                net.Start("RequestReturnCar")
+                net.SendToServer()
+            end
+
+            local spawnButton = vgui.Create("DButton", frame)
+            spawnButton:Dock(BOTTOM)
+            spawnButton:SetText("Spawn Selected Car")
+            spawnButton.DoClick = function()
+                if CurTime() < spawnButtonCooldown then
+                    Derma_Message("You need to wait before spawning another car.", "Cooldown", "OK")
+                    return
+                end
+
+                local selectedLine = list:GetSelectedLine()
+                if not selectedLine then return end
+                local selectedDisplayName = list:GetLine(selectedLine):GetValue(1)
+                local selectedEntityName = displayNameMap[selectedDisplayName]
+                net.Start("SpawnSelectedCarQuick")
+                net.WriteString(selectedEntityName)
+                net.SendToServer()
+
+                spawnButtonCooldown = CurTime() + 10 -- Set the cooldown to 10 seconds
+            end
+        end
+    )
+end
+
+
+concommand.Add("opengaragecd", OpenGarageMenu)
+concommand.Add("opengarage", OpenQuickSpawn)
+
 hook.Add(
     "PostDrawOpaqueRenderables",
     "kinfo_cardealer",
